@@ -1,9 +1,30 @@
 ﻿@page "/"
+@inject HttpClient client
 
 <PageTitle>Index</PageTitle>
+<div class="main-container">
+    <button @onclick=Generate class="btn-primary">Generate</button>
 
-<h1>Hello, world!</h1>
+    <div class="tld-container">
+        <a href="https://www.@domainName">@domainName</a>
+    </div>
 
-Welcome to your new app.
+    <p>This could be your domain name...</p>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private string domainName = "";
+    private Generator generator;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        generator = new(client);
+        await generator.Initialize();
+    }
+
+    private void Generate() {
+        Console.WriteLine("Generating a new domain name...");
+        domainName = generator.GetRandomUrl();
+    }
+}
+

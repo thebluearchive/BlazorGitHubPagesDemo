@@ -1,0 +1,27 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.tld-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    margin: auto;
+    width: 50%;
+    max-width: 584px;
+}
+
+.tld {
+    font-size: larger;
+    color: blue;
+}
