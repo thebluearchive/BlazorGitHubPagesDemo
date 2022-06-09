@@ -1,3 +1,31 @@
+/* /Pages/Index.razor.rz.scp.css */
+.main-container[b-pefqjezumo] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.tld-container[b-pefqjezumo] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    margin: auto;
+    width: 50%;
+    max-width: 584px;
+}
+
+.tld[b-pefqjezumo] {
+    font-size: larger;
+    color: blue;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-jk19c5qv90] {
     position: relative;
@@ -78,68 +106,5 @@ main[b-jk19c5qv90] {
     .top-row[b-jk19c5qv90], article[b-jk19c5qv90] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
-    }
-}
-/* /Shared/NavMenu.razor.rz.scp.css */
-.navbar-toggler[b-keavebehbk] {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-row[b-keavebehbk] {
-    height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.navbar-brand[b-keavebehbk] {
-    font-size: 1.1rem;
-}
-
-.oi[b-keavebehbk] {
-    width: 2rem;
-    font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
-}
-
-.nav-item[b-keavebehbk] {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-}
-
-    .nav-item:first-of-type[b-keavebehbk] {
-        padding-top: 1rem;
-    }
-
-    .nav-item:last-of-type[b-keavebehbk] {
-        padding-bottom: 1rem;
-    }
-
-    .nav-item[b-keavebehbk]  a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
-
-.nav-item[b-keavebehbk]  a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
-}
-
-.nav-item[b-keavebehbk]  a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
-
-@media (min-width: 641px) {
-    .navbar-toggler[b-keavebehbk] {
-        display: none;
-    }
-
-    .collapse[b-keavebehbk] {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
     }
 }
