@@ -23,12 +23,12 @@ public class Generator {
     }
 
     private async Task<string[]> LoadWordList() {
-        string words = await _client.GetStringAsync("word-lists/words.txt");
+        string words = await _client.GetStringAsync("/BlazorGitHubPagesDemo/word-lists/words.txt");
         return words.Split("\r\n");
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
-        string words = await _client.GetStringAsync("word-lists/tlds.txt");
+        string words = await _client.GetStringAsync("/BlazorGitHubPagesDemo/word-lists/tlds.txt");
         return words.Split("\r\n").ToHashSet<string>();
     }
 
