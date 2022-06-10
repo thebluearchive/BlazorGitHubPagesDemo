@@ -26,22 +26,22 @@ public class Generator {
     }
 
     private async Task<string[]> LoadWordList() {
-        string wordListPath = $"{_client.BaseAddress}word-lists/words.txt";
+        string wordListPath = $"word-lists/words.txt";
         Console.WriteLine($"Trying to load the wordlist at '{wordListPath}'");
         string words = await _client.GetStringAsync(wordListPath);
         string[] result = words.Split("\r\n");
         Console.WriteLine($"Loaded wordlist. {result.Length} words loaded.");
-        // PrettyPrint(result);
+        PrettyPrint(result);
         return result;
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
-        string tldListPath = $"{_client.BaseAddress}word-lists/tlds.txt";
+        string tldListPath = $"word-lists/tlds.txt";
         Console.WriteLine($"Trying to load the tld list at at '{tldListPath}'");
         string tlds = await _client.GetStringAsync(tldListPath);
         HashSet<string> result = tlds.Split("\r\n").ToHashSet<string>();
         Console.WriteLine($"Loaded tldList. {result.Count} tlds loaded.");
-        // PrettyPrint(result);
+        PrettyPrint(result);
         return result;
     }
 
