@@ -20,10 +20,10 @@ jobs:
           dotnet-version: 6.0.300
       # publishes Blazor project to the release-folder
       - name: Publish .NET Project
-        run: dotnet publish BlazorGitHubPagesDemo.csproj -c Release -o release --nologo
-      # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPagesDemo\/" \/>/g' release/wwwroot/index.html
+        run: dotnet publish DomainGenerator.csproj -c Release -o release --nologo
+      # changes the base-tag in index.html from '/' to 'DomainGenerator' to match GitHub Pages repository subdirectory
+      - name: Change base-tag in index.html from / to DomainGenerator
+        run: sed -i 's/<base href="\/" \/>/<base href="\/DomainGenerator\/" \/>/g' release/wwwroot/index.html
       # add .nojekyll file to tell Github pages to not treat this as a Jekyll project (allow files and folders starting with an underscore)
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
