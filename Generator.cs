@@ -14,34 +14,25 @@ public class Generator {
     /// </summary>
     public Generator(HttpClient client) {
         _client = client;
-        Console.WriteLine($"client initialized with base address '{client.BaseAddress}'");
     }
 
     public async Task Initialize() {
-        Console.WriteLine("Initializing Generator...");
         Words = await LoadWordList();
         TopLevelDomains = await LoadTopLevelDomains();
         AllPossibleUrls = GetAllPossibleUrls(Words, TopLevelDomains);
-        Console.WriteLine("Generator initialization complete.");
     }
 
     private async Task<string[]> LoadWordList() {
         string wordListPath = $"word-lists/words.txt";
-        Console.WriteLine($"Trying to load the wordlist at '{wordListPath}'");
         string words = await _client.GetStringAsync(wordListPath);
         string[] result = words.Split("\n");
-        Console.WriteLine($"Loaded wordlist. {result.Length} words loaded.");
-        // PrettyPrint(result);
         return result;
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
         string tldListPath = $"word-lists/tlds.txt";
-        Console.WriteLine($"Trying to load the tld list at at '{tldListPath}'");
         string tlds = await _client.GetStringAsync(tldListPath);
         HashSet<string> result = tlds.Split("\n").ToHashSet<string>();
-        Console.WriteLine($"Loaded tldList. {result.Count} tlds loaded.");
-        // PrettyPrint(result);
         return result;
     }
 
@@ -56,7 +47,6 @@ public class Generator {
     public List<string> GetAllPossibleUrls(string[] words, HashSet<string> tlds) {
         List<string> overlaps = new();
 
-        Console.WriteLine("Generating all possible urls...");
         foreach (string word in words)
         {
             for (int i = 1; i < word.Length; i++)
@@ -69,12 +59,10 @@ public class Generator {
             }
         }
         
-        Console.WriteLine($"Generated all possible urls. {overlaps.Count} urls generated.");
         return overlaps;
     }
 
     public string GetRandomUrl() {
-        Console.WriteLine("Getting a random url.");
         return AllPossibleUrls[random.Next(AllPossibleUrls.Count - 1)];
     }
 }
