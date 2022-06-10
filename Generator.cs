@@ -28,22 +28,22 @@ public class Generator {
         string wordListPath = "/BlazorGitHubPagesDemo/word-lists/words.txt";
         Console.WriteLine($"Trying to load the wordlist at '{wordListPath}'");
         string words = await _client.GetStringAsync(wordListPath);
-        Console.WriteLine("Loaded wordlist.");
+        Console.WriteLine($"Loaded wordlist. {words.Length} words loaded.");
         return words.Split("\r\n");
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
         string tldListPath = "/BlazorGitHubPagesDemo/word-lists/tlds.txt";
         Console.WriteLine($"Trying to load the tld list at at '{tldListPath}'");
-        string words = await _client.GetStringAsync(tldListPath);
-        Console.WriteLine("Loaded tldList.");
-        return words.Split("\r\n").ToHashSet<string>();
+        string tlds = await _client.GetStringAsync(tldListPath);
+        Console.WriteLine($"Loaded tldList. {tlds.Length} tlds loaded.");
+        return tlds.Split("\r\n").ToHashSet<string>();
     }
 
     public List<string> GetAllPossibleUrls(string[] words, HashSet<string> tlds) {
         List<string> overlaps = new();
 
-        Console.WriteLine("Generating all possible urls");
+        Console.WriteLine("Generating all possible urls...");
         foreach (string word in words)
         {
             for (int i = 1; i < word.Length; i++)
@@ -53,15 +53,18 @@ public class Generator {
                 {
                     overlaps.Add($"{word[..i]}.{suffix}");
                 }
+                if (i % 100 == 0) {
+                    Console.WriteLine($"Generated {i*100} urls...");
+                }
             }
         }
         
-        Console.WriteLine("Generated all possible urls");
+        Console.WriteLine($"Generated all possible urls. {AllPossibleUrls.Count} urls generated.");
         return overlaps;
     }
 
     public string GetRandomUrl() {
-        Console.WriteLine("Getting a random url");
+        Console.WriteLine("Getting a random url.");
         return AllPossibleUrls[random.Next(AllPossibleUrls.Count - 1)];
     }
 }
