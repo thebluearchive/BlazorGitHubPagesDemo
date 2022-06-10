@@ -31,7 +31,7 @@ public class Generator {
         string words = await _client.GetStringAsync(wordListPath);
         string[] result = words.Split("\r\n");
         Console.WriteLine($"Loaded wordlist. {result.Length} words loaded.");
-        PrettyPrint(result);
+        // PrettyPrint(result);
         return result;
     }
 
@@ -41,7 +41,7 @@ public class Generator {
         string tlds = await _client.GetStringAsync(tldListPath);
         HashSet<string> result = tlds.Split("\r\n").ToHashSet<string>();
         Console.WriteLine($"Loaded tldList. {result.Count} tlds loaded.");
-        PrettyPrint(result);
+        // PrettyPrint(result);
         return result;
     }
 
