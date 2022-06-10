@@ -4,6 +4,11 @@
     flex-direction: column;
 }
 
+.main {
+    background-color: rgb(39, 68, 68);
+    color: white;
+}
+
 main {
     flex: 1;
 }

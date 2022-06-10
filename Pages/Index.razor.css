@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    height: 100vh;
 }
 
 .tld-container {
@@ -16,7 +17,6 @@
     border: 1px solid #dfe1e5;
     box-shadow: none;
     border-radius: 24px;
-    margin: auto;
     width: 50%;
     max-width: 584px;
 }
@@ -24,4 +24,23 @@
 .tld {
     font-size: larger;
     color: blue;
+}
+
+.generate-button {
+    background-color: rgb(68, 68, 134);
+    color: white;
+    min-width: 150px;
+    min-height: 2rem;
+    border-radius: 5px;
+    border: 1px solid lightskyblue;
+    transition: color 300ms, box-shadow 300ms;
+}
+
+.generate-button:active {
+    background-color: rgb(44, 44, 82);
+}
+
+.generate-button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
