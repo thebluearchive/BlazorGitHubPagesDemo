@@ -17,23 +17,33 @@ public class Generator {
     }
 
     public async Task Initialize() {
+        Console.WriteLine("Initializing Generator...");
         Words = await LoadWordList();
         TopLevelDomains = await LoadTopLevelDomains();
         AllPossibleUrls = GetAllPossibleUrls(Words, TopLevelDomains);
+        Console.WriteLine("Generator initialization complete.");
     }
 
     private async Task<string[]> LoadWordList() {
-        string words = await _client.GetStringAsync("/BlazorGitHubPagesDemo/word-lists/words.txt");
+        string wordListPath = "/BlazorGitHubPagesDemo/word-lists/words.txt";
+        Console.WriteLine($"Trying to load the wordlist at '{wordListPath}'");
+        string words = await _client.GetStringAsync(wordListPath);
+        Console.WriteLine("Loaded wordlist.");
         return words.Split("\r\n");
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
-        string words = await _client.GetStringAsync("/BlazorGitHubPagesDemo/word-lists/tlds.txt");
+        string tldListPath = "/BlazorGitHubPagesDemo/word-lists/tlds.txt";
+        Console.WriteLine($"Trying to load the tld list at at '{tldListPath}'");
+        string words = await _client.GetStringAsync(tldListPath);
+        Console.WriteLine("Loaded tldList.");
         return words.Split("\r\n").ToHashSet<string>();
     }
 
     public List<string> GetAllPossibleUrls(string[] words, HashSet<string> tlds) {
         List<string> overlaps = new();
+
+        Console.WriteLine("Generating all possible urls");
         foreach (string word in words)
         {
             for (int i = 1; i < word.Length; i++)
@@ -45,10 +55,13 @@ public class Generator {
                 }
             }
         }
+        
+        Console.WriteLine("Generated all possible urls");
         return overlaps;
     }
 
     public string GetRandomUrl() {
+        Console.WriteLine("Getting a random url");
         return AllPossibleUrls[random.Next(AllPossibleUrls.Count - 1)];
     }
 }
