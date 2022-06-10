@@ -25,19 +25,31 @@ public class Generator {
     }
 
     private async Task<string[]> LoadWordList() {
-        string wordListPath = "/BlazorGitHubPagesDemo/word-lists/words.txt";
+        string wordListPath = "word-lists/words.txt";
         Console.WriteLine($"Trying to load the wordlist at '{wordListPath}'");
         string words = await _client.GetStringAsync(wordListPath);
-        Console.WriteLine($"Loaded wordlist. {words.Length} words loaded.");
-        return words.Split("\r\n");
+        string[] result = words.Split("\r\n");
+        Console.WriteLine($"Loaded wordlist. {result.Length} words loaded.");
+        // PrettyPrint(result);
+        return result;
     }
 
     private async Task<HashSet<string>> LoadTopLevelDomains() {
-        string tldListPath = "/BlazorGitHubPagesDemo/word-lists/tlds.txt";
+        string tldListPath = "word-lists/tlds.txt";
         Console.WriteLine($"Trying to load the tld list at at '{tldListPath}'");
         string tlds = await _client.GetStringAsync(tldListPath);
-        Console.WriteLine($"Loaded tldList. {tlds.Length} tlds loaded.");
-        return tlds.Split("\r\n").ToHashSet<string>();
+        HashSet<string> result = tlds.Split("\r\n").ToHashSet<string>();
+        Console.WriteLine($"Loaded tldList. {result.Count} tlds loaded.");
+        // PrettyPrint(result);
+        return result;
+    }
+
+    private void PrettyPrint(IEnumerable<string> strings) {
+        Console.Write("[");
+        foreach (string elem in strings) {
+            Console.Write($"\"{elem}\", ");
+        }
+        Console.WriteLine("]");
     }
 
     public List<string> GetAllPossibleUrls(string[] words, HashSet<string> tlds) {
@@ -53,13 +65,10 @@ public class Generator {
                 {
                     overlaps.Add($"{word[..i]}.{suffix}");
                 }
-                if (i % 100 == 0) {
-                    Console.WriteLine($"Generated {i*100} urls...");
-                }
             }
         }
         
-        Console.WriteLine($"Generated all possible urls. {AllPossibleUrls.Count} urls generated.");
+        Console.WriteLine($"Generated all possible urls. {overlaps.Count} urls generated.");
         return overlaps;
     }
 

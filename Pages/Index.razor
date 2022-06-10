@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject HttpClient client
+@inject NavigationManager navManager
 
 <PageTitle>Index</PageTitle>
 <div class="main-container">
@@ -18,6 +19,7 @@
     
     protected override async Task OnInitializedAsync()
     {
+        client.BaseAddress = new Uri(navManager.BaseUri);
         generator = new(client);
         await generator.Initialize();
     }
