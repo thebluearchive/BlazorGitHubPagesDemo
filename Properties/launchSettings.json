@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BlazorGitHubPagesDemo": {
+    "DomainGenerator": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

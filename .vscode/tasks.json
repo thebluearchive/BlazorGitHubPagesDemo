@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BlazorGitHubPagesDemo.csproj",
+                "${workspaceFolder}/DomainGenerator.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/BlazorGitHubPagesDemo.csproj",
+                "${workspaceFolder}/DomainGenerator.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/BlazorGitHubPagesDemo.csproj"
+                "${workspaceFolder}/DomainGenerator.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

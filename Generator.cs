@@ -1,5 +1,5 @@
 
-namespace BlazorGitHubPagesDemo;
+namespace DomainGenerator;
 
 public class Generator {
     private string[] Words { get; set; }
