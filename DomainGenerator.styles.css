@@ -1,3 +1,12 @@
+/* /Pages/About.razor.rz.scp.css */
+.main-container[b-7z74wozh57] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
 /* /Pages/Index.razor.rz.scp.css */
 h1[b-niq1qz8r0h] {
     padding-bottom: 30px;
@@ -59,6 +68,7 @@ h1[b-niq1qz8r0h] {
 .main[b-8wzouev5jo] {
     background-color: rgb(39, 68, 68);
     color: white;
+    height: 100vh;
 }
 
 main[b-8wzouev5jo] {
@@ -135,4 +145,25 @@ main[b-8wzouev5jo] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+}
+/* /Shared/SiteFooter.razor.rz.scp.css */
+.site-footer[b-jte8mk2etw] {
+    position: absolute;
+    align-items: center;
+    height: 2rem;
+    gap: 2rem;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0rem 2rem;
+}
+
+a[b-jte8mk2etw] {
+    color: lightgray
+}
+
+.logo[b-jte8mk2etw] {
+    height: 16px;
+    width: 16px;
 }
