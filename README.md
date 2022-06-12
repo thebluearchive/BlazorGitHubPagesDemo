@@ -9,7 +9,6 @@ Some examples include:
 
 Domain generator is hosted at https://thebluearchive.github.io/DomainGenerator/.
 
-
 ## Building
 Domain generator is a blazor webassembly application. Building it requires the .NET 6 SDK. To build it, first clone the repository.
 
@@ -22,4 +21,3 @@ Then navigate to the root directory of the repository and run
 ```
 dotnet build
 ```
-
