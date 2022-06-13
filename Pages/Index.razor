@@ -19,7 +19,7 @@
 
 @code {
     private string domainName = "";
-    private Generator generator;
+    private Generator? generator;
     
     protected override async Task OnInitializedAsync()
     {
@@ -28,6 +28,10 @@
     }
 
     private void Generate() {
+        if (generator is null) {
+            throw new InvalidOperationException("Generator has not been instantiated.");
+        }
+
         Console.WriteLine("Generating a new domain name...");
         domainName = generator.GetRandomUrl();
     }

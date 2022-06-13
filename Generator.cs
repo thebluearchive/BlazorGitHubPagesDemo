@@ -2,9 +2,9 @@
 namespace DomainGenerator;
 
 public class Generator {
-    private string[] Words { get; set; }
-    private HashSet<string> TopLevelDomains { get; set; }
-    private List<string> AllPossibleUrls { get;set; }
+    private string[]? Words { get; set; }
+    private HashSet<string>? TopLevelDomains { get; set; }
+    private List<string>? AllPossibleUrls { get;set; }
     private Random random = new();
     private HttpClient _client;
 
@@ -49,7 +49,7 @@ public class Generator {
 
         foreach (string word in words)
         {
-            for (int i = 1; i < word.Length; i++)
+            for (int i = 2; i < word.Length; i++)
             {
                 string suffix = word[i..];
                 if (tlds.Contains(suffix))
@@ -63,6 +63,9 @@ public class Generator {
     }
 
     public string GetRandomUrl() {
+        if (AllPossibleUrls is null) {
+            throw new InvalidOperationException("Generator class has not been initialized.");
+        }
         return AllPossibleUrls[random.Next(AllPossibleUrls.Count - 1)];
     }
 }
